@@ -62,11 +62,11 @@ public class WeatherOracleActivity extends Activity {
         final ArrayList<Map<String, ?>> data = new ArrayList<Map<String, ?>>();
         data.add(PredictWeatherBean.getHeaderDescription());
         final List<PredictWeatherBean> predictions = WeatherCrawlerManager.getInstance().getPredictions();
+        WeatherPredictor predictor = new WeatherPredictor();
+        data.add(predictor.getPredict(predictions).asMap());
         for (PredictWeatherBean predictWeatherBean : predictions) {
             data.add(predictWeatherBean.asMap());
         }
-        WeatherPredictor predictor = new WeatherPredictor();
-        data.add(predictor.getPredict(predictions).asMap());
         return data;
     }
 
