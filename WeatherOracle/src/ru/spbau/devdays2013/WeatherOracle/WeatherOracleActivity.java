@@ -41,6 +41,7 @@ public class WeatherOracleActivity extends Activity {
                         PredictWeatherBean.WIND_DIRECTION,
                         PredictWeatherBean.WIND_SPEED,
                         PredictWeatherBean.PRESSURE,
+                        PredictWeatherBean.SOURCE
                 },
                 new int[]{
                         R.id.tempView,
@@ -48,7 +49,8 @@ public class WeatherOracleActivity extends Activity {
                         R.id.waterTempView,
                         R.id.windDirectionView,
                         R.id.windSpeedView,
-                        R.id.pressureView
+                        R.id.pressureView,
+                        R.id.sourceView
                 }
                 );
         gridView.setAdapter(adapter);
@@ -56,9 +58,10 @@ public class WeatherOracleActivity extends Activity {
 
     private ArrayList<Map<String, ?>> getData() {
         final ArrayList<Map<String, ?>> data = new ArrayList<Map<String, ?>>();
-        data.add(new PredictWeatherBean(12, 5, 14, 8, WindDirection.EAST, 776).asMap());
-        data.add(new PredictWeatherBean(12, 5, 14, 8, WindDirection.EAST, 776).asMap());
-        data.add(new PredictWeatherBean(12, 5, 14, 8, WindDirection.EAST, 776).asMap());
+        data.add(PredictWeatherBean.getHeaderDescription());
+        data.add(new PredictWeatherBean(12, 5, 14, 8, WindDirection.EAST, 776,"Яндекс" ).asMap());
+        data.add(new PredictWeatherBean(12, 5, 14, 8, WindDirection.EAST, 776, "GisMeteo").asMap());
+        data.add(new PredictWeatherBean(12, 5, 14, 8, WindDirection.EAST, 776, "Rambler").asMap());
 
         return data;
     }

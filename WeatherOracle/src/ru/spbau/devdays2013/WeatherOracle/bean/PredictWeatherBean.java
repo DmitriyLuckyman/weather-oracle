@@ -14,21 +14,36 @@ public class PredictWeatherBean {
     public final static String WIND_SPEED ="WIND_SPEED";
     public final static String WIND_DIRECTION ="WIND_DIRECTION";
     public final static String PRESSURE ="PRESSURE";
+    public final static String SOURCE ="SOURCE";
 
     private int temperature;
+    private String source;
     private int comfortTemperature;
     private int waterTemperature;
     private int windSpeed;
     private WindDirection windDirection;
     private int pressure;
 
-    public PredictWeatherBean(int temperature, int windSpeed, int comfortTemperature, int waterTemperature, WindDirection windDirection, int pressure) {
+    public PredictWeatherBean(int temperature, int windSpeed, int comfortTemperature, int waterTemperature, WindDirection windDirection, int pressure, String source) {
         this.temperature = temperature;
         this.windSpeed = windSpeed;
         this.comfortTemperature = comfortTemperature;
         this.waterTemperature = waterTemperature;
         this.windDirection = windDirection;
         this.pressure = pressure;
+        this.source = source;
+    }
+
+    public static Map<String, String> getHeaderDescription(){
+        final HashMap<String, String> result = new HashMap<String, String>();
+        result.put(TEMPERATURE, "t °C");
+        result.put(COMFORT_TEMPERATURE, "comfort °C");
+        result.put(WATER_TEMPERATURE, "water °C");
+        result.put(WIND_DIRECTION, "WD");
+        result.put(WIND_SPEED, "speed");
+        result.put(PRESSURE, "P");
+        result.put(SOURCE, "Сводный прогноз погоды");
+        return result;
     }
 
     public Map<String, String> asMap(){
@@ -39,6 +54,7 @@ public class PredictWeatherBean {
         result.put(WIND_DIRECTION, String.valueOf(windDirection));
         result.put(WIND_SPEED, String.valueOf(windSpeed));
         result.put(PRESSURE, String.valueOf(pressure));
+        result.put(SOURCE, String.valueOf(source));
         return result;
     }
 
