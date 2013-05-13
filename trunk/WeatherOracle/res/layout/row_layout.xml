@@ -1,33 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
+              android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:id="@+id/rowView">
 
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sourceView" android:layout_gravity="left|top" android:layout_margin="2dp"/>
 
-    <TextView
+    <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tempView" android:layout_gravity="center_horizontal|top"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/comfortTempView" android:layout_gravity="center_horizontal|top"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/waterTempView" android:layout_gravity="center_horizontal|top"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/windDirectionView" android:layout_gravity="center_horizontal|top"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/windSpeedView" android:layout_gravity="center_horizontal|top"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/pressureView" android:layout_gravity="center_horizontal|top"/>
+            android:layout_height="fill_parent" android:layout_gravity="right|center_vertical">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tempView" android:layout_gravity="center_vertical|right|top" android:layout_margin="3dp"
+                android:maxWidth="30dp" android:width="50dp" android:gravity="center_vertical|right"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/comfortTempView" android:layout_gravity="center_vertical|right|top"
+                android:layout_margin="3dp" android:width="50dp" android:maxWidth="30dp"
+                android:gravity="center_vertical|right"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/waterTempView" android:layout_gravity="center_vertical|right|top" android:layout_margin="3dp"
+                android:width="50dp" android:maxWidth="30dp" android:gravity="center_vertical|right"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/windDirectionView" android:layout_gravity="center_horizontal|top"
+                android:layout_margin="3dp" android:width="50dp" android:gravity="center_vertical|center_horizontal"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/windSpeedView" android:layout_gravity="center_vertical|right|top" android:layout_margin="3dp"
+                android:width="50dp" android:maxWidth="30dp" android:gravity="center_vertical|right"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pressureView" android:layout_gravity="center_vertical|right|top" android:layout_margin="3dp"
+                android:width="50dp" android:gravity="center_vertical|right"/>
+    </LinearLayout>
 </LinearLayout>
