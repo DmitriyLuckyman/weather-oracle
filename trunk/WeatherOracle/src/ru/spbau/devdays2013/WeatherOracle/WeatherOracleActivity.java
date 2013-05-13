@@ -7,10 +7,12 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import ru.spbau.devdays2013.WeatherOracle.bean.PredictWeatherBean;
 import ru.spbau.devdays2013.WeatherOracle.bean.WindDirection;
+import ru.spbau.devdays2013.WeatherOracle.crawler.WeatherCrawlerManager;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 public class WeatherOracleActivity extends Activity {
@@ -59,10 +61,12 @@ public class WeatherOracleActivity extends Activity {
     private ArrayList<Map<String, ?>> getData() {
         final ArrayList<Map<String, ?>> data = new ArrayList<Map<String, ?>>();
         data.add(PredictWeatherBean.getHeaderDescription());
-        data.add(new PredictWeatherBean(12, 5, 14, 8, WindDirection.EAST, 776,"Яндекс" ).asMap());
-        data.add(new PredictWeatherBean(12, 5, 14, 8, WindDirection.EAST, 776, "GisMeteo").asMap());
-        data.add(new PredictWeatherBean(12, 5, 14, 8, WindDirection.EAST, 776, "Rambler").asMap());
-
+        final List<PredictWeatherBean> predictions = WeatherCrawlerManager.getInstance().getPredictions();
+        for (PredictWeatherBean predictWeatherBean : predictions) {
+            data.add(predictWeatherBean.asMap());
+        }
+        WeatherPredictor predictor = new WeatherPredictor();
+        data.add(predictor.getPredict(predictions).asMap());
         return data;
     }
 
