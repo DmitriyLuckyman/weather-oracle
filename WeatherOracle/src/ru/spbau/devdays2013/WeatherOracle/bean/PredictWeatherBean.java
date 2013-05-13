@@ -37,10 +37,10 @@ public class PredictWeatherBean {
     public static Map<String, String> getHeaderDescription(){
         final HashMap<String, String> result = new HashMap<String, String>();
         result.put(TEMPERATURE, "t °C");
-        result.put(COMFORT_TEMPERATURE, "comfort °C");
-        result.put(WATER_TEMPERATURE, "water °C");
-        result.put(WIND_DIRECTION, "WD");
-        result.put(WIND_SPEED, "speed");
+        result.put(COMFORT_TEMPERATURE, "Comfort °C");
+        result.put(WATER_TEMPERATURE, "Water °C");
+        result.put(WIND_DIRECTION, "Wind Dir");
+        result.put(WIND_SPEED, "Wind Speed");
         result.put(PRESSURE, "P");
         result.put(SOURCE, "Сводный прогноз погоды");
         return result;
