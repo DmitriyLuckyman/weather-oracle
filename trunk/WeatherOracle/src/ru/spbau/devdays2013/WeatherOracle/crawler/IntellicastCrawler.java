@@ -11,11 +11,9 @@ import org.jsoup.*;
 import ru.spbau.devdays2013.WeatherOracle.bean.WindDirection;
 
 /**
- * Created with IntelliJ IDEA.
  * User: Evgeniy Sluzhaev
  * Date: 5/14/13
  * Time: 2:01 AM
- * To change this template use File | Settings | File Templates.
  */
 public class IntellicastCrawler implements WeatherCrawler {
     private final String FORECAST_URL = "http://www.intellicast.com/Local/Forecast.aspx?unit=C&location=RSXX0091";
@@ -23,13 +21,11 @@ public class IntellicastCrawler implements WeatherCrawler {
 
     @Override
     public String getID() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return SITENAME;
     }
 
     @Override
-    public void setDate(Date date) {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
+    public void setDate(Date date) {}
 
     @Override
     public PredictWeatherBean call() throws Exception {
@@ -44,21 +40,26 @@ public class IntellicastCrawler implements WeatherCrawler {
         String windSpeedToken = tokens[tokens.length - 4];
         int windSpeed = Integer.parseInt(windSpeedToken.substring(1, windSpeedToken.length() - 3));
         String windDirectionToken = tokens[tokens.length - 1];
-        WindDirection direction = WindDirection.SOUTH;
+        WindDirection direction;
         switch (windDirectionToken.charAt(1)) {
             case 'N':
                 direction = WindDirection.NORTH;
                 break;
             case 'S':
                 direction = WindDirection.SOUTH;
+                break;
             case 'E':
                 direction = WindDirection.EAST;
+                break;
             case 'W':
                 direction = WindDirection.WEST;
+                break;
+            default:
+                direction = WindDirection.SOUTH;
+                break;
         }
         Log.d("Intellicast", tokens[tokens.length - 1]);
         int temp = Integer.parseInt(tempString);
-        PredictWeatherBean bean = new PredictWeatherBean(temp, windSpeed, 0, 0, direction, 0, SITENAME);
-        return bean;
+        return new PredictWeatherBean(temp, windSpeed, 0, 0, direction, 750, SITENAME);
     }
 }
