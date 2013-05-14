@@ -1,5 +1,6 @@
 package ru.spbau.devdays2013.WeatherOracle.crawler;
 
+import android.util.Log;
 import ru.spbau.devdays2013.WeatherOracle.bean.PredictWeatherBean;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.concurrent.Future;
  *         Date: 13.05.13
  */
 public class WeatherCrawlerManager {
-    private static WeatherCrawlerManager ourInstance = new WeatherCrawlerManager();
+    private static final WeatherCrawlerManager ourInstance = new WeatherCrawlerManager();
     private Map<String, WeatherCrawler> crawlers = new HashMap<String, WeatherCrawler>();
     private ExecutorService caller = Executors.newFixedThreadPool(3);
     public static WeatherCrawlerManager getInstance() {
@@ -36,12 +37,6 @@ public class WeatherCrawlerManager {
     }
 
     private WeatherCrawlerManager() {
-/*
-        registerCrawler(new TestCrawler("Test1", "Яндекс"));
-        registerCrawler(new TestCrawler("Test3", "Rambler"));
-        registerCrawler(new TestCrawler("Test4", "GisMeteo"));
-        registerCrawler(new TestCrawler("Test2", "CC&B News"));
-*/
         registerCrawler(new IntellicastCrawler());
         registerCrawler(new GisMeteoCrawler());
         registerCrawler(new YandexCrawler());
@@ -54,13 +49,16 @@ public class WeatherCrawlerManager {
         try {
             final List<Future<PredictWeatherBean>> futures = caller.invokeAll(crawlers.values());
             for (Future<PredictWeatherBean> future : futures) {
-                result.add(future.get());
+                try {
+                    result.add(future.get());
+                } catch (InterruptedException e) {
+                    Log.d("Crawler", "Can't get weather", e);
+                } catch (ExecutionException e) {
+                    Log.d("Crawler", "Can't get weather", e);
+                }
             }
-
         } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+            Log.d("Crawler", "Can't get weather", e);
         }
         return result;
     }
