@@ -40,6 +40,7 @@ public class WeatherCrawlerManager {
         registerCrawler(new TestCrawler("Test3", "Rambler"));
         registerCrawler(new TestCrawler("Test4", "GisMeteo"));
         registerCrawler(new TestCrawler("Test2", "CC&B News"));
+        registerCrawler(new IntellicastCrawler());
     }
 
     public List<PredictWeatherBean> getPredictions(){
