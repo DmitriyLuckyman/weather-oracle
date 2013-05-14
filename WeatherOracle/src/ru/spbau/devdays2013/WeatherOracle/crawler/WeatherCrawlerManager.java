@@ -45,6 +45,8 @@ public class WeatherCrawlerManager {
         registerCrawler(new IntellicastCrawler());
         registerCrawler(new GisMeteoCrawler());
         registerCrawler(new YandexCrawler());
+        registerCrawler(new MeteoinfoCrawler());
+        registerCrawler(new RP5Crawler());
     }
 
     public List<PredictWeatherBean> getPredictions(){
