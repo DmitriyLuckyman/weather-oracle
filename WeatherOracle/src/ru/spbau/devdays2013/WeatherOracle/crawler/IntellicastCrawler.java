@@ -60,6 +60,6 @@ public class IntellicastCrawler implements WeatherCrawler {
         }
         Log.d("Intellicast", tokens[tokens.length - 1]);
         int temp = Integer.parseInt(tempString);
-        return new PredictWeatherBean(temp, windSpeed, 0, 0, direction, 0, SITENAME);
+        return new PredictWeatherBean(temp, windSpeed, null, null, direction, null, SITENAME);
     }
 }

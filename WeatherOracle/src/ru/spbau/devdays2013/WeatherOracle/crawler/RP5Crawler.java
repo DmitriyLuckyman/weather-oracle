@@ -52,6 +52,6 @@ public class RP5Crawler implements WeatherCrawler {
                 break;
         }
         int pressure = Integer.parseInt(tomorrow.getElementsByTag("pressure").get(0).html());
-        return new PredictWeatherBean(temperature, windVelocity, 0, 0, windDirection, pressure, CRAWLER_ID);
+        return new PredictWeatherBean(temperature, windVelocity, null, null, windDirection, pressure, CRAWLER_ID);
     }
 }

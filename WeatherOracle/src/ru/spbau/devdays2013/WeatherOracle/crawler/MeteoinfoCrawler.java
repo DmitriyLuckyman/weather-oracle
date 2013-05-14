@@ -76,6 +76,6 @@ public class MeteoinfoCrawler implements WeatherCrawler {
         } else {
             windDirection = WindDirection.SOUTH_WEST;
         }
-        return new PredictWeatherBean(temperature, windVelocity, 0, 0, windDirection, 0, CRAWLER_ID);
+        return new PredictWeatherBean(temperature, windVelocity, null, null, windDirection, null, CRAWLER_ID);
     }
 }

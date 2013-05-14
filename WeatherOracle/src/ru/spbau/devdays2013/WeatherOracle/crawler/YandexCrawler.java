@@ -91,7 +91,7 @@ public class YandexCrawler implements WeatherCrawler {
         return new PredictWeatherBean(
                 temp,
                 windSpeed,
-                0,
+                null,
                 water,
                 direction,
                 pressure,
