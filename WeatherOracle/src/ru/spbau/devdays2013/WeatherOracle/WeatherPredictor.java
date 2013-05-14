@@ -39,7 +39,6 @@ public class WeatherPredictor {
                     ++windSpeedSize;
                 }
             }
-            final int size = predictions.size();
             result.setTemperature(result.getTemperature() / temperatureSize);
             result.setComfortTemperature(result.getComfortTemperature() / comfortTemperatureSize);
             result.setWaterTemperature(result.getWaterTemperature() / waterTemperatureSize);

@@ -16,15 +16,16 @@ public class PredictWeatherBean {
     public final static String PRESSURE ="PRESSURE";
     public final static String SOURCE ="SOURCE";
 
-    private int temperature;
+    private Integer temperature;
+    private Integer comfortTemperature;
+    private Integer waterTemperature;
+    private Integer windSpeed;
     private String source;
-    private int comfortTemperature;
-    private int waterTemperature;
-    private int windSpeed;
     private WindDirection windDirection;
-    private int pressure;
+    private Integer pressure;
 
-    public PredictWeatherBean(int temperature, int windSpeed, int comfortTemperature, int waterTemperature, WindDirection windDirection, int pressure, String source) {
+    public PredictWeatherBean(Integer temperature, Integer windSpeed, Integer comfortTemperature,
+                              Integer waterTemperature, WindDirection windDirection, Integer pressure, String source) {
         this.temperature = temperature;
         this.windSpeed = windSpeed;
         this.comfortTemperature = comfortTemperature;
@@ -48,46 +49,58 @@ public class PredictWeatherBean {
 
     public Map<String, String> asMap(){
         final HashMap<String, String> result = new HashMap<String, String>();
-        result.put(TEMPERATURE, String.valueOf(temperature));
-        result.put(COMFORT_TEMPERATURE, String.valueOf(comfortTemperature));
-        result.put(WATER_TEMPERATURE, String.valueOf(waterTemperature));
-        result.put(WIND_DIRECTION, String.valueOf(windDirection));
-        result.put(WIND_SPEED, String.valueOf(windSpeed));
-        result.put(PRESSURE, String.valueOf(pressure));
-        result.put(SOURCE, String.valueOf(source));
+        result.put(TEMPERATURE, toString(temperature));
+        result.put(COMFORT_TEMPERATURE, toString(comfortTemperature));
+        result.put(WATER_TEMPERATURE, toString(waterTemperature));
+        result.put(WIND_DIRECTION, toString(windDirection));
+        result.put(WIND_SPEED, toString(windSpeed));
+        result.put(PRESSURE, toString(pressure));
+        result.put(SOURCE, toString(source));
         return result;
     }
 
-    public int getTemperature() {
+    private String toString(Object s) {
+        return s == null ? "-" : String.valueOf(s);
+    }
+
+    public Integer getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(int temperature) {
+    public void setTemperature(Integer temperature) {
         this.temperature = temperature;
     }
 
-    public int getComfortTemperature() {
+    public Integer getComfortTemperature() {
         return comfortTemperature;
     }
 
-    public void setComfortTemperature(int comfortTemperature) {
+    public void setComfortTemperature(Integer comfortTemperature) {
         this.comfortTemperature = comfortTemperature;
     }
 
-    public int getWaterTemperature() {
+    public Integer getWaterTemperature() {
         return waterTemperature;
     }
 
-    public void setWaterTemperature(int waterTemperature) {
+    public void setWaterTemperature(Integer waterTemperature) {
         this.waterTemperature = waterTemperature;
     }
 
-    public int getWindSpeed() {
+    public Integer getWindSpeed() {
         return windSpeed;
     }
 
-    public void setWindSpeed(int windSpeed) {
+    public void setWindSpeed(Integer windSpeed) {
         this.windSpeed = windSpeed;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 
     public WindDirection getWindDirection() {
@@ -98,11 +111,11 @@ public class PredictWeatherBean {
         this.windDirection = windDirection;
     }
 
-    public int getPressure() {
+    public Integer getPressure() {
         return pressure;
     }
 
-    public void setPressure(int pressure) {
+    public void setPressure(Integer pressure) {
         this.pressure = pressure;
     }
 }

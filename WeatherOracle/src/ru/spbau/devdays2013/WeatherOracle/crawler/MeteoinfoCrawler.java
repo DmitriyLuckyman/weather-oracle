@@ -7,7 +7,6 @@ import org.jsoup.nodes.Element;
 import ru.spbau.devdays2013.WeatherOracle.bean.PredictWeatherBean;
 import ru.spbau.devdays2013.WeatherOracle.bean.WindDirection;
 
-import java.util.Date;
 
 /**
  * User: Evgeniy Sluzhaev
@@ -21,10 +20,6 @@ public class MeteoinfoCrawler implements WeatherCrawler {
     @Override
     public String getID() {
         return CRAWLER_ID;
-    }
-
-    @Override
-    public void setDate(Date date) {
     }
 
     @Override

@@ -27,11 +27,6 @@ public class TestCrawler implements WeatherCrawler {
         return id;
     }
 
-    @Override
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     /**
      * Computes a result, or throws an exception if unable to do so.
      *

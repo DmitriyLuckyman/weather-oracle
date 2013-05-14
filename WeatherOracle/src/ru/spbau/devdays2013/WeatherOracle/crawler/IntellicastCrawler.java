@@ -1,13 +1,11 @@
 package ru.spbau.devdays2013.WeatherOracle.crawler;
 
 import android.util.Log;
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import ru.spbau.devdays2013.WeatherOracle.bean.PredictWeatherBean;
-
-import java.util.Date;
-import org.jsoup.*;
 import ru.spbau.devdays2013.WeatherOracle.bean.WindDirection;
 
 /**
@@ -23,9 +21,6 @@ public class IntellicastCrawler implements WeatherCrawler {
     public String getID() {
         return SITENAME;
     }
-
-    @Override
-    public void setDate(Date date) {}
 
     @Override
     public PredictWeatherBean call() throws Exception {

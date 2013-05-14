@@ -6,7 +6,6 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import ru.spbau.devdays2013.WeatherOracle.bean.PredictWeatherBean;
-import ru.spbau.devdays2013.WeatherOracle.bean.WindDirection;
 import ru.spbau.devdays2013.WeatherOracle.crawler.WeatherCrawlerManager;
 
 import java.text.DateFormat;
@@ -19,7 +18,6 @@ public class WeatherOracleActivity extends Activity {
 
     ListView gridView;
     TextView dateView;
-    private SimpleAdapter adapter;
 
     /**
      * Called when the activity is first created.
@@ -34,7 +32,7 @@ public class WeatherOracleActivity extends Activity {
 
     private void configureGridView() {
         gridView = (ListView) findViewById(R.id.listView);
-        adapter = new SimpleAdapter(this,
+        SimpleAdapter adapter = new SimpleAdapter(this,
                 getData(), R.layout.row_layout,
                 new String[]{
                         PredictWeatherBean.TEMPERATURE,
@@ -54,7 +52,7 @@ public class WeatherOracleActivity extends Activity {
                         R.id.pressureView,
                         R.id.sourceView
                 }
-                );
+        );
         gridView.setAdapter(adapter);
     }
 
@@ -74,6 +72,4 @@ public class WeatherOracleActivity extends Activity {
         dateView = (TextView) findViewById(R.id.todayTextView);
         dateView.setText(String.format("Сегодня : %s", DateFormat.getDateInstance().format(new Date())));
     }
-
-
 }
